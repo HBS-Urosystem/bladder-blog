@@ -1,0 +1,84 @@
+---
+import { getSanityImageUrl, formatBlogPostDate } from '../utils/helpers.js'
+
+export interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+//console.log(post.author.name)
+
+---
+
+    <a href={`/blog/${post.slug.current}`}>
+      <article>
+        <aside>
+          {post.mainImage && <img width="720" height="420" class="" loading="lazy" src={getSanityImageUrl(post.mainImage).url()}>
+          <div>
+            <time>{formatBlogPostDate(post.publishedAt) || 'This post is older than 2 years'}</time>
+            <h1 class="">{post.title}</h1>
+            {post.author && (<figure>
+            <picture class="">
+            {(post.author?.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
+            </picture>
+            {post.author?.name && <figcaption><name>{post.author.name}</name></figcaption>}
+            </figure>)}
+
+
+            <p class="py-6">{post.excerpt}</p>
+            <button class="btn btn-sm btn-rounded">Start reading</button>
+          </div>
+        </aside>
+      </article>
+    </a>
+
+
+<style>
+  article {
+    @apply hero bg-base-200 my-16;
+    min-height: 50vh;
+  }
+  aside {
+    @apply flex-col hero-content lg:flex-row-reverse px-8;
+    width: 100%;
+    gap: 4rem;
+    justify-content: space-between;
+  }
+  aside > img {
+    @apply max-w-sm rounded-lg shadow-2xl
+  }
+  h1 {
+    @apply text-2xl font-bold
+  }
+  figure {
+    @apply avatar;
+    align-items: center;
+  }
+  .avatar {
+  }
+  picture {
+    margin-inline-end: 1rem;
+    @apply shadow-2xl w-8 h-8 mask mask-squircle
+  }
+  figcaption {
+    font-variant: small-caps;
+  }
+  time {
+    @apply h-8;
+    display: block;
+    font-size: smaller;
+  }
+
+.author,
+.publish-date {
+  margin: 0;
+}
+
+.publish-date,
+.author {
+  font-size: 1.25rem;
+  color: var(--theme-text-lighter);
+}
+
+
+</style>

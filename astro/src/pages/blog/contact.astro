@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+let title = 'The Bladder Blog';
+let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page!  
+<br>
+<br>
+Yours truly, UroSystem Team.`;
+let permalink = 'https://www.urosystem.com/blog/contact';
+let mainImgUrl = '/assets/pixabay-ground-cherry-6993059.svg';
+
+---
+<BaseLayout title={`${title} – Contact our authors`} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
+<header style={`background-image: url(${mainImgUrl})`}>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="text-center hero-content text-neutral-content flex-col">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">Contact our authors</h1>
+
+      <p class="mb-5 text-xl">{description}</p>
+    </div>
+    <div class="card w-auto shadow-xl image-full">
+      <form class="card-body" name="Blog_contact" method="POST" netlify>
+        <h2 class="card-title">Please fill in the form</h2>
+          <fieldset class="flex gap-4">
+            <input id="name" type="text" required placeholder="Your Name" class="input input-bordered input-md flex-auto">
+            <input id="email" type="email" required placeholder="Your Email" class="input input-bordered input-md flex-auto">
+          </fieldset>
+          <fieldset class="flex flex-col gap-4">
+            <textarea id="message" class="textarea textarea-primary" placeholder="Your Message"></textarea>
+            <a href="#content"><button tabindex="0" class="btn btn-primary flex-none">Send</button></a>
+          </fieldset>
+          <fieldset class="flex gap-4">
+            <input id="consent" type="checkbox" required class="toggle toggle-sm" />
+            <label for="consent">I agree to get answer to my Email. See our <a>Privacy Policy</a></label>
+          </fieldset>
+      </form>
+    </div>
+  </div>
+</header>
+<main id="content">
+  <section>
+  </section>
+</main>
+</BaseLayout>
+
+<style>
+  header {
+    @apply hero min-h-screen;
+    margin-top: -4rem;
+    /*padding-top: 4rem;*/
+  }
+  h1 {
+    padding-top: 6rem;
+  }
+  main {
+    @apply container mx-auto;
+  }
+
+  /*section {
+    min-height: 50vh;
+    height: 50vh;
+  }*/
+
+</style>

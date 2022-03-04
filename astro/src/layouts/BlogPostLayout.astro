@@ -1,0 +1,21 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const {title, description, ogImageUrl, publishDate, permalink} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <BaseHead title={title} description={description} permalink={permalink} ogImageUrl={ogImageUrl} publishDate={publishDate} canonicalURL={Astro.request.canonicalURL} articleSchema />
+  </head>
+
+  <body>
+  <Nav/>
+  <slot/>
+  <Footer/>
+    <!--<script type="module" src={Astro.resolve('../components/CodeBlock/code-block.ts')}></script>-->
+  </body>
+</html>
+

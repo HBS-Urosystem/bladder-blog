@@ -1,0 +1,37 @@
+---
+// Component Imports
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
+import BlogPost from '../../components/BlogPost.astro'
+import {client} from '../../lib/sanityClient.js';
+import { getSanityImageUrl } from '../../utils/helpers.js';
+import { allPosts } from '../../lib/api.js';
+
+export async function getStaticPaths({rss}) {
+  const allBlogPosts = await client.fetch(allPosts);
+
+  rss({
+    title: 'Urosystem\'s Bladder Blog',
+    description: 'An example blog on Astro',
+    customData: `<language>en-us</language>`,
+    items: allBlogPosts.map(item => ({
+      title: item.title,
+      description: item.excerpt,
+      link: `/blog/${item.slug.current}`,
+      pubDate: item.publishedAt || null,
+    })),
+  });
+  return allBlogPosts.map(post => ({params: { slug: post.slug.current }, props: {post}}));
+}
+
+const { post } = Astro.props;
+---
+
+<BlogPostLayout title={post.title}  ogImageUrl={post.mainImage && getSanityImageUrl(post.mainImage).width(1200).url()} >
+  <BlogPost post={post} />
+</BlogPostLayout>
+
+<style>
+  button {
+    @apply indicator indicator-center;
+  }
+</style>

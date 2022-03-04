@@ -1,0 +1,84 @@
+---
+// Component Imports
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import SanityBlockContent from '../../components/SanityBlockContent.jsx'
+import { getSanityImageUrl } from '../../utils/helpers.js'
+
+import { client } from '../../lib/sanityClient.js';
+import { allAuthors } from '../../lib/api.js';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'The Bladder Blog';
+let description = `This blog aims to help interstitial cystitis bladder pain syndrome (IC/BPS) patients understand better how IC can affect everyday life, as well as provide insight for doctors and therapists treating IC and other lower urinary tract conditions. We aim to give guidance for individuals who think they may have IC, as well as tips and tricks for those who have already received a diagnosis and are looking for ways to alleviate symptoms. Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page!  
+<br>
+<br>
+Yours truly, UroSystem Team.`;
+let permalink = 'https://www.urosystem.com/blog/about';
+let mainImgUrl = 'https://cdn.sanity.io/images/mj1r5gb1/production/b457de559f3157bf307655ada6c4ab9903456e84-1280x853.png';
+
+const allAuthorData = await client.fetch(allAuthors);
+
+---
+<BaseLayout title={`${title} – Our authors`} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
+<header style={`background-image: url(${mainImgUrl})`}>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="text-center hero-content text-neutral-content">
+    <!--<img width="720" height="420" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />-->
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">{title}</h1>
+
+      <p class="mb-5">{description}</p>
+      <a href="/blog/about#team"><label tabindex="0" class="btn btn-primary">Meet our team</label></a>
+    </div>
+  </div>
+</header>
+<main id="team">
+  {allAuthorData.map(author => (
+  <article>
+    <aside>
+      <div>
+        <h1 class="">{author.name}</h1>
+        <SanityBlockContent blocks={author.bio} />
+        <!--<button class="btn btn-sm btn-rounded">Start reading</button>-->
+      </div>
+      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}>}
+    </aside>
+  </article>
+  ))}
+</main>
+</BaseLayout>
+
+<style>
+  header {
+    @apply hero min-h-screen;
+    margin-top: -4rem;
+  }
+  main {
+    @apply container mx-auto;
+  }
+  /*section {
+    min-height: 50vh;
+    height: 50vh;
+  }*/
+
+  article {
+    @apply hero bg-base-200 my-16;
+    min-height: 25vh;
+  }
+  aside {
+    @apply flex-col hero-content lg:flex-row-reverse px-8;
+    width: 100%;
+    gap: 4rem;
+    justify-content: space-between;
+  }
+  aside > img {
+    @apply max-w-xs rounded-lg shadow-2xl
+  }
+  h1 {
+    @apply text-2xl font-bold
+  }
+</style>
