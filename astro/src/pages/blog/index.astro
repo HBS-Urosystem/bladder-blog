@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import BaseLayout from '/src/layouts/BaseLayout.astro'
+import BlogPostPreview from '/src/components/BlogPostPreview.astro';
 
-import { client } from '../../lib/sanityClient.js';
-import { allPosts } from '../../lib/api.js';
+import { client } from '/src/lib/sanityClient.js';
+import { allPosts } from '/src/lib/api.js';
 
 let title = 'The Bladder Blog';
 let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.`;
 let permalink = 'https://www.urosystem.com/blog';
-let mainImgUrl = '/assets/pixabay-ground-cherry-6993059.svg';
+let mainImgUrl = '/blog/assets/pixabay-ground-cherry-6993059.svg';
 
 const allPostData = await client.fetch(allPosts);
 
