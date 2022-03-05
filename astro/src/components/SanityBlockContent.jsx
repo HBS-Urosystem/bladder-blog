@@ -1,4 +1,3 @@
-import {h} from 'preact';
 import BlockContent from '@sanity/block-content-to-react';
 
 const serializers = {

@@ -1,4 +1,3 @@
-import {h} from 'preact';
 import site from '../data/site.js';
 
 function ArticleSchema({title, permalink, publishDate, ogImageUrl, description}) {

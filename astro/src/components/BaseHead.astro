@@ -27,10 +27,15 @@ const { title, description, permalink, publishDate, ogImageUrl, canonicalURL, ar
 <meta name="msapplication-config" content="assets/browserconfig.xml">
 <meta name="theme-color" content="#0b3b54">
 
-<style global>
-  /*@import "../assets/global.css";*/
+<!--style global>
+  @import "/blog/assets/_global.css";
+</style-->
+<link rel="stylesheet" href='/src/assets/global.css'>
+<style>
+i {
+color: black;
+}
 </style>
-<link rel="stylesheet" href={Astro.resolve('/src/assets/global.css')}/>
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
