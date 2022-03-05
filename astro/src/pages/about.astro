@@ -1,12 +1,12 @@
 ---
 // Component Imports
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import BlogPostPreview from '../../components/BlogPostPreview.astro';
-import SanityBlockContent from '../../components/SanityBlockContent.jsx'
-import { getSanityImageUrl } from '../../utils/helpers.js'
+import BaseLayout from '/src/layouts/BaseLayout.astro'
+import BlogPostPreview from '/src/components/BlogPostPreview.astro';
+import SanityBlockContent from '/src/components/SanityBlockContent.jsx'
+import { getSanityImageUrl } from '/src/utils/helpers.js'
 
-import { client } from '../../lib/sanityClient.js';
-import { allAuthors } from '../../lib/api.js';
+import { client } from '/src/lib/sanityClient.js';
+import { allAuthors } from '/src/lib/api.js';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -18,7 +18,7 @@ let description = `This blog aims to help interstitial cystitis bladder pain syn
 <br>
 Yours truly, UroSystem Team.`;
 let permalink = 'https://www.urosystem.com/blog/about';
-let mainImgUrl = 'https://cdn.sanity.io/images/mj1r5gb1/production/b457de559f3157bf307655ada6c4ab9903456e84-1280x853.png';
+let mainImgUrl = '/blog/assets/pixabay-ground-cherry-6993059.svg';
 
 const allAuthorData = await client.fetch(allAuthors);
 
