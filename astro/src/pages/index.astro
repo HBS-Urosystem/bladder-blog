@@ -39,8 +39,7 @@ const allPostData = await client.fetch(allPosts);
 </header>
 <main id="content">
   <section>
-    {allPostData.map((post) => <BlogPostPreview post={post} />)}
-    {allPostData.map((post) => <BlogPostPreview post={post} />)}
+    {allPostData.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
   </section>
 </main>
 </BaseLayout>

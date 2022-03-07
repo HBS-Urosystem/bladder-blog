@@ -33,8 +33,7 @@ Yours truly, UroSystem Team.`;
 </header>
 <main id="content">
   <section>
-    {category.posts.map((post) => <BlogPostPreview post={post} />)}
-    {category.posts.map((post) => <BlogPostPreview post={post} />)}
+    {category.posts.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
   </section>
 </main>
 </BaseLayout>
