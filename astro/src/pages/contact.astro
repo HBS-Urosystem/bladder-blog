@@ -23,15 +23,15 @@ let mainImgUrl = '/blog/assets/+.svg';
       <form class="card-body" name="Blog_contact" method="POST" netlify>
         <h2 class="card-title">Please fill in the form</h2>
           <fieldset class="flex gap-4">
-            <input id="name" type="text" required placeholder="Your Name" class="input input-bordered input-md flex-auto">
-            <input id="email" type="email" required placeholder="Your Email" class="input input-bordered input-md flex-auto">
+            <input id="name" name="name" type="text" required placeholder="Your Name" class="input input-bordered input-md flex-auto">
+            <input id="email" name="email" type="email" required placeholder="Your Email" class="input input-bordered input-md flex-auto">
           </fieldset>
           <fieldset class="flex flex-col gap-4">
-            <textarea id="message" class="textarea textarea-primary" placeholder="Your Message"></textarea>
+            <textarea id="message" name="message" class="textarea textarea-primary" placeholder="Your Message"></textarea>
             <a href="#content"><button tabindex="0" class="btn btn-primary flex-none">Send</button></a>
           </fieldset>
           <fieldset class="flex gap-4">
-            <input id="consent" type="checkbox" required class="toggle toggle-sm" />
+            <input id="consent" name="consent" type="checkbox" required class="toggle toggle-sm" />
             <label for="consent">I agree to get answer to my Email. See our <a>Privacy Policy</a></label>
           </fieldset>
       </form>
