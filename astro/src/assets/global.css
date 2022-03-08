@@ -63,3 +63,7 @@ article p a, article p a:visited, article li > a, article li > a:visited {
 [data-theme="dark"] header {
   background-size: auto;
 }
+
+[data-theme="dark"] form a {
+  text-decoration: dotted underline;
+}
