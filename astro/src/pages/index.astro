@@ -25,11 +25,11 @@ const allPostData = await client.fetch(allPosts);
     <div class="card w-auto shadow-xl image-full">
       <form class="card-body" name="Blog_subscribe" method="POST" netlify>
         <h2 class="card-title">Subscribe to get monthly news</h2>
-          <fieldset class="flex gap-4">
+          <fieldset>
             <input id="email" name="email" type="email" required placeholder="Your Email" class="input input-bordered input-md flex-auto">
             <button type="submit" tabindex="0" class="btn btn-primary flex-none">Subscribe</button>
           </fieldset>
-          <fieldset class="flex gap-4">
+          <fieldset>
             <input id="consent" name="consent" type="checkbox" required class="toggle toggle-sm" />
             <label for="consent">I agree to subscribe to the newsletter.</label> <a href="https://www.urosystem.com/en/privacy-policy" rel="external" target="_blank">See our Privacy Policy</a>
           </fieldset>
@@ -56,7 +56,9 @@ const allPostData = await client.fetch(allPosts);
   main {
     @apply container mx-auto;
   }
-
+  fieldset {
+    @apply flex flex-wrap gap-4;
+  }
   /*section {
     min-height: 50vh;
     height: 50vh;
