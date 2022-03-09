@@ -11,7 +11,7 @@ export async function getStaticPaths({rss}) {
 
   rss({
     title: 'Urosystem\'s Bladder Blog',
-    description: 'An example blog on Astro',
+    description: 'Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.',
     customData: `<language>en-us</language>`,
     items: allBlogPosts.map(item => ({
       title: item.title,
@@ -26,7 +26,7 @@ export async function getStaticPaths({rss}) {
 const { post } = Astro.props;
 ---
 
-<BlogPostLayout title={post.title}  ogImageUrl={post.mainImage && getSanityImageUrl(post.mainImage).width(1200).url()} >
+<BlogPostLayout title={post.title} description={post.excerpt} ogImageUrl={post.mainImage && getSanityImageUrl(post.mainImage).width(1200).url()} >
   <BlogPost post={post} />
 </BlogPostLayout>
 

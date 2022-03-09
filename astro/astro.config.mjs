@@ -17,23 +17,23 @@
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
-  vite: {
+  /*vite: {
     build: {
       assetsDir: '/blog/assets',
       reportCompressedSize: true
     }
-  },
+  },*/
   buildOptions: {
-    site: 'https://bladder-dev.netlify.app/blog/', // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
+    site: 'https://www.urosystem.com/blog/', // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
     sitemap: true,
-    vite: {
+    /*vite: {
       build: {
         // Example: Force a broken package to skip SSR processing, if needed
         //external: ['broken-npm-package'],
         assetsDir: '/blog/assets',
         reportCompressedSize: true
       }
-    },
+    },*/
   },
   // Comment out "renderers: []" to enable Astro's default component support.
   renderers: ['@astrojs/renderer-preact','@astrojs/renderer-svelte'],
@@ -41,14 +41,14 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     tailwindConfig: './tailwind.config.js',
     // Example: Require a trailing slash during development
     //trailingSlash: 'always',
-    vite: {
+    /*vite: {
       build: {
         // Example: Force a broken package to skip SSR processing, if needed
         //external: ['broken-npm-package'],
         assetsDir: '/blog/assets',
         reportCompressedSize: true
       }
-    },
+    },*/
   },
 
 });

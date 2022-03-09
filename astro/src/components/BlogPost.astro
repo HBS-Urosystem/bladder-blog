@@ -19,7 +19,7 @@ const mainImgUrl = getSanityImageUrl(post.mainImage).url()
       <h1>{post.title}</h1>
       {post.author && (<figure class="avatar">
       <picture>
-      {(post.author.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
+      {(post.author.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).width(72).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
       </picture>
       {post.author.name && <figcaption>{post.author.name}</figcaption>}
       </figure>)}

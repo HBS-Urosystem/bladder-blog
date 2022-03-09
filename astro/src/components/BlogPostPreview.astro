@@ -13,13 +13,13 @@ const { post } = Astro.props;
     <a href={`/blog/${post.slug.current}`}>
       <article>
         <aside>
-          {post.mainImage && <img width="720" height="420" class="" loading="lazy" src={getSanityImageUrl(post.mainImage).url()}>
+          {post.mainImage && <img loading="lazy" src={getSanityImageUrl(post.mainImage).width(720).url()}>
           <div>
             <time>{formatBlogPostDate(post.publishedAt) || 'This post is older than 2 years'}</time>
             <h1 class="">{post.title}</h1>
             {post.author && (<figure>
             <picture class="">
-            {(post.author?.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
+            {(post.author?.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).width(72).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
             </picture>
             {post.author?.name && <figcaption><name>{post.author.name}</name></figcaption>}
             </figure>)}
