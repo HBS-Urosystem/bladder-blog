@@ -12,6 +12,7 @@ font-size: 1rem;
 
 font-size: var(--rem);
 
+--bg: #072f43;
 --dark-blue: #072c3f;
 --mid-blue: #0b3b54;
 --light-blue: #52b2d6;
@@ -22,7 +23,9 @@ font-size: var(--rem);
 --grad-light-blue-75: linear-gradient(302deg, var(--light-blue-75), var(--mid-blue-75));
 
 }
-
+html[data-theme="dark"] {
+  background-color: var(--bg);
+}
 /*body {
   background-image: url('/blog/assets/+.svg');
 }*/
@@ -58,10 +61,6 @@ article p a, article p a:visited, article li > a, article li > a:visited {
 
 [data-theme="dark"] input[type='checkbox'] {
   --tw-border-opacity: 1;
-}
-
-[data-theme="dark"] header {
-  background-size: auto;
 }
 
 [data-theme="dark"] form a {

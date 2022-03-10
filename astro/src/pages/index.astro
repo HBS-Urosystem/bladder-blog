@@ -8,7 +8,7 @@ import { allPosts } from '/src/lib/api.js';
 let title = 'The Bladder Blog';
 let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.`;
 let permalink = 'https://www.urosystem.com/blog';
-let mainImgUrl = '/blog/assets/+.svg';
+let mainImgUrl = '/assets/+.svg';
 
 const allPostData = await client.fetch(allPosts);
 
@@ -49,6 +49,7 @@ const allPostData = await client.fetch(allPosts);
     @apply hero min-h-screen;
     /*margin-top: -4rem;*/
     /*padding-top: 4rem;*/
+    background-size: 568px;
   }
   h1 {
     padding-top: 6rem;
