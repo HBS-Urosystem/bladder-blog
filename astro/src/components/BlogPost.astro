@@ -9,7 +9,7 @@ export interface Props {
 const { post } = Astro.props;
 const mainImgUrl = getSanityImageUrl(post.mainImage).url()
 // const blogPostBody = await convertBlockContentToMarkdown(post.bodyRaw);
-//console.log({post})
+const postUrl = Astro.request.canonicalURL.href
 ---
 
 {!!post.imageHero && <header style={`background-image: url('${mainImgUrl}')`}>
@@ -50,6 +50,12 @@ const mainImgUrl = getSanityImageUrl(post.mainImage).url()
       {post.categories.map(category => (
         <label tabindex="0"><a href={`/blog/category/${category.slug.current}`}>#{category.title}</a></label>
       ))}
+  </aside>
+  <aside>
+    Share this article:
+      <a href={`https://twitter.com/intent/tweet?text=${postUrl}`} rel="external noopener" target="_blank">Twitter</a>
+      <a href={`https://www.facebook.com/sharer/sharer.php?u=${postUrl}`} rel="external noopener" target="_blank">Facebook</a>
+      <a href={`mailto:?subject=Check%20out%20this%20article%20from%20The%20Bladder%20Blog&body=${post.title}%0A%0A${post.excerpt}%0A%0A${postUrl}`} rel="external noopener" target="_blank">Email</a>
   </aside>
 
 </main>
