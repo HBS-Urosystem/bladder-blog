@@ -86,14 +86,23 @@
 </nav>
 
 <style>
-  
+  nav {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding-block: 0;
+  }
   label {
-    z-index: 0;
+    /*z-index: 0;*/
+    text-align: center;
   }
   label.btn {
     padding-block: .75rem;
   }
   label:not(.btn) a {
     padding: .75rem;
+    display: block;
   }
 </style>
