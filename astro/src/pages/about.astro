@@ -43,7 +43,6 @@ const allAuthorData = await client.fetch(allAuthors);
       <div>
         <h1 class="">{author.name}</h1>
         <SanityBlockContent blocks={author.bio} />
-        <!--<button class="btn btn-sm btn-rounded">Start reading</button>-->
       </div>
       {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}>}
     </aside>

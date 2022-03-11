@@ -17,20 +17,21 @@ const postUrl = Astro.request.canonicalURL.href
   <div class="text-center hero-content text-neutral-content">
     <div class="max-w-md">
       <h1>{post.title}</h1>
+      <!--
       {post.author && (<figure class="avatar">
       <picture>
       {(post.author.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).width(72).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
       </picture>
       {post.author.name && <figcaption>{post.author.name}</figcaption>}
       </figure>)}
-
-      <!--<p class="mb-5 text-xl">{post.excerpt}</p>-->
-      <!--<a href="#content"><button class="btn btn-primary">Share this post</button></a>-->
+      -->
+      
     </div>
   </div>
 </header>}
 <main id="content">
-  {!post.imageHero && <img data={post.mainImage} loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />}
+  {!post.imageHero && <img loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />}
+  <!--
   <aside>
     {!post.imageHero && post.author && (
       <figure class="avatar">
@@ -40,6 +41,7 @@ const postUrl = Astro.request.canonicalURL.href
       {post.author.name && <figcaption>{post.author.name}</figcaption>}
     </figure>)}
   </aside>
+  -->
   <article>
     {!post.imageHero && <h1>{post.title}</h1>}
     <time>{formatBlogPostDate(post.publishedAt)}</time>
@@ -109,7 +111,7 @@ const postUrl = Astro.request.canonicalURL.href
     width: auto;
     max-width: 100%;
     max-height: 50vh;
-    @apply rounded-lg shadow-2xl mx-auto
+    @apply rounded-lg shadow-2xl mx-auto my-8
   }
   time {
     font-size: smaller;

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '/src/layouts/BaseLayout.astro'
 import BlogPostPreview from '/src/components/BlogPostPreview.astro';
+import Subscribe from '/src/components/Subscribe.astro';
 
 import { client } from '/src/lib/sanityClient.js';
 import { allPosts } from '/src/lib/api.js';
@@ -22,19 +23,7 @@ const allPostData = await client.fetch(allPosts);
 
       <p class="mb-5 text-xl">{description}</p>
     </div>
-    <div class="card w-auto shadow-xl image-full">
-      <form class="card-body" name="Blog_subscribe" method="POST" netlify>
-        <h2 class="card-title">Subscribe to get monthly news</h2>
-          <fieldset>
-            <input id="email" name="email" type="email" required placeholder="Your Email" class="input input-bordered input-md flex-auto">
-            <button type="submit" tabindex="0" class="btn btn-primary flex-none">Subscribe</button>
-          </fieldset>
-          <fieldset>
-            <input id="consent" name="consent" type="checkbox" required class="toggle toggle-sm" />
-            <label for="consent">I agree to subscribe to the newsletter.</label> <a href="https://www.urosystem.com/en/privacy-policy" rel="external" target="_blank">See our Privacy Policy</a>
-          </fieldset>
-      </form>
-    </div>
+    <Subscribe/>
   </div>
 </header>
 <main id="content">

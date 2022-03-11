@@ -43,7 +43,7 @@ article p a, article p a:visited, article li > a, article li > a:visited {
   word-break: break-word;
 }
 
-[data-theme="dark"] header .btn, [data-theme="dark"] main .btn {
+[data-theme="dark"] header .btn, [data-theme="dark"] main .btn , [data-theme="dark"] aside .btn {
   font-size: 1rem;
   text-transform: none;
   padding: 0 3rem;

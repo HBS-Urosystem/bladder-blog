@@ -10,27 +10,29 @@ const { post } = Astro.props;
 
 ---
 
+<article>
+  <aside>
     <a href={`/blog/${post.slug.current}`}>
-      <article>
-        <aside>
-          {post.mainImage && <img loading="lazy" src={getSanityImageUrl(post.mainImage).width(720).url()}>
-          <div>
-            <time>{formatBlogPostDate(post.publishedAt) || 'This post is older than 2 years'}</time>
-            <h1 class="">{post.title}</h1>
-            {post.author && (<figure>
-            <picture class="">
-            {(post.author?.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).width(72).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
-            </picture>
-            {post.author?.name && <figcaption><name>{post.author.name}</name></figcaption>}
-            </figure>)}
-
-
-            <p class="py-6">{post.excerpt}</p>
-            <button class="btn btn-sm btn-rounded">Start reading</button>
-          </div>
-        </aside>
-      </article>
+      {post.mainImage && <img loading="lazy" src={getSanityImageUrl(post.mainImage).width(720).url()}>
     </a>
+    <div>
+      <time>{formatBlogPostDate(post.publishedAt) || 'This post is older than 2 years'}</time>
+      <h1 class="">{post.title}</h1>
+      <!--
+      {post.author && (<figure>
+      <picture class="">
+      {(post.author?.image && <img loading="lazy" src={getSanityImageUrl(post.author.image).width(72).url()}>) || <img loading="lazy" src="https://api.lorem.space/image/face?hash=47449">}
+      </picture>
+      {post.author?.name && <figcaption><name>{post.author.name}</name></figcaption>}
+      </figure>)}
+      -->
+      <p class="py-6">{post.excerpt}</p>
+      <a href={`/blog/${post.slug.current}`}>
+        <button class="btn btn-sm btn-rounded btn-primary">Start reading</button>
+      </a>
+    </div>
+  </aside>
+</article>
 
 
 <style>
@@ -44,7 +46,7 @@ const { post } = Astro.props;
     gap: 4rem;
     justify-content: space-between;
   }
-  aside > img {
+  aside > a > img, aside > img {
     @apply max-w-sm rounded-lg shadow-2xl
   }
   h1 {

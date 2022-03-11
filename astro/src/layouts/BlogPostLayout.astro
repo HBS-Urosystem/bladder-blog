@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Subscribe from '/src/components/Subscribe.astro';
 
 const {title, description, ogImageUrl, publishDate, permalink} = Astro.props;
 ---
@@ -14,6 +15,7 @@ const {title, description, ogImageUrl, publishDate, permalink} = Astro.props;
   <body>
   <Nav/>
   <slot/>
+  <Subscribe/>
   <Footer/>
     <!--<script type="module" src={Astro.resolve('../components/CodeBlock/code-block.ts')}></script>-->
   </body>
