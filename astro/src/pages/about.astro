@@ -44,7 +44,7 @@ const allAuthorData = await client.fetch(allAuthors);
         <h1 class="">{author.name}</h1>
         <SanityBlockContent blocks={author.bio} />
       </div>
-      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}>}
+      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}> || <div class="imgplaceholder"></div>}
     </aside>
   </article>
   ))}
@@ -76,8 +76,9 @@ const allAuthorData = await client.fetch(allAuthors);
     gap: 4rem;
     justify-content: space-between;
   }
-  aside > img {
-    @apply max-w-xs rounded-lg shadow-2xl
+  aside > img, .imgplaceholder {
+    @apply max-w-xs rounded-lg shadow-2xl;
+    min-width: 30%;
   }
   h1 {
     @apply text-2xl font-bold
