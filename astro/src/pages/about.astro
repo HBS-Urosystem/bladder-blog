@@ -44,7 +44,7 @@ const allAuthorData = await client.fetch(allAuthors);
         <h1 class="">{author.name}</h1>
         <SanityBlockContent blocks={author.bio} />
       </div>
-      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}> || <img class="imgplaceholder" src="assets/icon-5359554_640_optim.png"/>}
+      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>}
     </aside>
   </article>
   ))}
