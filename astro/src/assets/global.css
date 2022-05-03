@@ -61,7 +61,7 @@ article p a, article p a:visited, article li > a, article li > a:visited {
 
 [data-theme="dark"] input[type='checkbox'] {
   --tw-border-opacity: 1;
-  margin-bottom: -1px;
+  margin-bottom: -2px;
 }
 
 [data-theme="dark"] form a {
