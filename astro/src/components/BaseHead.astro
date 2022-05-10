@@ -38,9 +38,9 @@ const { title, description, keywords, permalink, publishDate, ogImageUrl, canoni
 <meta name="description" content={description || site.description} />
 <meta name="keywords" content={keywords?.toString()} />
 <!-- Sitemap -->
-<link rel="sitemap" href="/blog/sitemap.xml">
+<!--<link rel="sitemap" href="/blog/sitemap.xml">-->
 <!-- RSS -->
-<link rel="alternate" type="application/rss+xml" title={site.name} href={`${site.url}/feed/blog.xml`}/>
+<link rel="alternate" type="application/rss+xml" title={site.name} href={`${site.url}/rss.xml`}/>
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL}>
 <!-- Open Graph / Facebook -->

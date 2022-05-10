@@ -26,7 +26,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   buildOptions: {
     site: 'https://www.urosystem.com/blog/', // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
     trailingSlash: 'ignore',
-    sitemap: true,
+    sitemap: false,
     /*vite: {
       build: {
         // Example: Force a broken package to skip SSR processing, if needed
