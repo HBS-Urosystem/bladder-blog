@@ -24,6 +24,23 @@ export default {
       to: {type: 'author'},
     },
     {
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
+    },
+    {
+      name: 'keywords',
+      title: 'Key words',
+      type: 'array',
+      of: [{type: 'string'}],
+    },
+    {
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -35,17 +52,6 @@ export default {
       name: 'imageHero',
       title: 'Hero image',
       type: 'boolean',
-    },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    },
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
     },
     {
       name: 'excerpt',

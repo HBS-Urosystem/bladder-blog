@@ -5,13 +5,14 @@ import site from "../data/site.js";
 export interface Props {
   title: string;
   description: string;
+  keywords: Array;
   permalink: string;
   publishDate: string;
   ogImageUrl: string;
   canonicalURL?: URL;
   articleSchema?: boolean;
 }
-const { title, description, permalink, publishDate, ogImageUrl, canonicalURL, articleSchema } = Astro.props;
+const { title, description, keywords, permalink, publishDate, ogImageUrl, canonicalURL, articleSchema } = Astro.props;
 ---
 
 <meta charset="utf-8" />
@@ -35,8 +36,9 @@ const { title, description, permalink, publishDate, ogImageUrl, canonicalURL, ar
 <title>{title}</title>
 <meta name="title" content={title || site.title} />
 <meta name="description" content={description || site.description} />
+<meta name="keywords" content={keywords?.toString()} />
 <!-- Sitemap -->
-<link rel="sitemap" href="/sitemap.xml">
+<link rel="sitemap" href="/blog/sitemap.xml">
 <!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title={site.name} href={`${site.url}/feed/blog.xml`}/>
 <!-- Canonical -->

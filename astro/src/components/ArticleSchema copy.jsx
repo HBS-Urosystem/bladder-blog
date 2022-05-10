@@ -1,3 +1,5 @@
+import {h} from 'preact';
+
 import site from '../data/site.js';
 
 function ArticleSchema({title, permalink, publishDate, ogImageUrl, description}) {
@@ -6,8 +8,8 @@ function ArticleSchema({title, permalink, publishDate, ogImageUrl, description})
         "@type": "Article",
         "publisher": {
             "@type": "Organization",
-            "name": `${site.title}`,
-            "url": `${site.url}`,
+            "name": `${site.name} Blog`,
+            "url": `${site.url}/blog/`,
         },
         "author": {
             "@type": "Person",
@@ -18,7 +20,7 @@ function ArticleSchema({title, permalink, publishDate, ogImageUrl, description})
                 "width": 512,
                 "height": 512
             },
-            "url": `${site.url}`,
+            "url": "https://example.com/about/",
             "sameAs": [
                 `${site.url}`,
                 `${site.facebookURL}`,
@@ -37,7 +39,7 @@ function ArticleSchema({title, permalink, publishDate, ogImageUrl, description})
         "description": `${description}`,
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": `${site.url}`
+                "@id": `${site.url}/blog/`
             }
         }
     return (

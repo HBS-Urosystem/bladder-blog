@@ -8,13 +8,21 @@ import { allPosts } from '/src/lib/api.js';
 
 let title = 'The Bladder Blog';
 let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.`;
+let keywords = [
+  'IC/BPS',
+  'IC treatment',
+  'IC diet',
+  'IC symptoms',
+  'bladder pain',
+  'pelvic pain'
+]
 let permalink = 'https://www.urosystem.com/blog';
 let mainImgUrl = '/blog/assets/+.svg';
 
 const allPostData = await client.fetch(allPosts);
 
 ---
-<BaseLayout title={title} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
+<BaseLayout title={title} description={description} keywords={keywords} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
 <header style={`background-image: url(${mainImgUrl})`}>
   <div class="hero-overlay bg-opacity-60"></div>
   <div class="text-center hero-content text-neutral-content flex-col">
