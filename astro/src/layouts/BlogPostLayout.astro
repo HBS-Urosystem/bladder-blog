@@ -15,7 +15,9 @@ const {title, description, keywords, ogImageUrl, publishDate, permalink} = Astro
   <body>
   <Nav/>
   <slot/>
+  <div class="max-w-md mx-auto">
   <Subscribe/>
+  </div>
   <Footer/>
     <!--<script type="module" src={Astro.resolve('../components/CodeBlock/code-block.ts')}></script>-->
   </body>
