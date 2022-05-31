@@ -60,6 +60,7 @@ const postUrl = Astro.request.canonicalURL.href
       <a href={`https://www.facebook.com/sharer/sharer.php?u=${postUrl}`} rel="external noopener" target="_blank">Facebook</a>
       <!--<a href={`https://www.facebook.com/dialog/share?app_id=5064192827001864&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`} rel="external noopener" target="_blank">Facebook</a>-->
       <a href={`mailto:?subject=Check%20out%20this%20article%20from%20The%20Bladder%20Blog&body=${post.title}%0A%0A${post.excerpt}%0A%0A${postUrl}`} rel="external noopener" target="_blank">Email</a>
+      <a href="/blog/rss.xml" rel="external noopener" target="_blank">RSS</a>
   </aside>
 
 </main>
