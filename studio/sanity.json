@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "Sanity Minimal Starter"
+    "name": "UroSystem Blog/Events"
   },
   "plugins": [
     "@sanity/base",

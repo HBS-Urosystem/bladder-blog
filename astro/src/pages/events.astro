@@ -1,0 +1,107 @@
+---
+// Component Imports
+import BaseLayout from '/src/layouts/BaseLayout.astro'
+import BlogPostPreview from '/src/components/BlogPostPreview.astro'
+import Subscribe from '/src/components/Subscribe.astro'
+import SanityBlockContent from '/src/components/SanityBlockContent.jsx'
+import { getSanityImageUrl, formatBlogPostDate } from '../utils/helpers.js'
+
+import { client } from '/src/lib/sanityClient.js'
+import { allEvents } from '/src/lib/api.js'
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'UroSystem';
+let description = `We aim to give guidance for individuals who think they may have IC, as well as tips and tricks for those who have already received a diagnosis and are looking for ways to alleviate symptoms. Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. 
+<br>
+<br>
+Meet us on the next event!`
+let permalink = 'https://www.urosystem.com/blog/about'
+let mainImgUrl = '/blog/assets/+.svg'
+
+const allEventData = await client.fetch(allEvents)
+/*allEventData.map(event => {
+  console.log(event.title,event.images)
+})*/
+//console.log(getSanityImageUrl(allEventData[1].images[0]).url())
+---
+<BaseLayout title={`${title} – Events`} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
+<header style={`background-image: url(${mainImgUrl})`}>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="text-center hero-content text-neutral-content">
+    <!--<img width="720" height="420" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />-->
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">{title}</h1>
+
+      <p class="mb-5">{description}</p>
+    <Subscribe/>
+    </div>
+  </div>
+</header>
+<main id="team">
+  {allEventData.map(event => (
+  <article>
+      <aside>
+        <time>{formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
+        <h1 class="">{event.title}</h1>
+        <SanityBlockContent blocks={event.body} />
+      </aside>
+      {event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}
+  </article>
+  ))}
+</main>
+</BaseLayout>
+
+<style>
+  header {
+    @apply hero min-h-screen;
+    /*margin-top: -4rem;*/
+    background-size: 568px;
+  }
+
+  main {
+    @apply container max-w-6xl mx-auto;
+  }
+  /*section {
+    min-height: 50vh;
+    height: 50vh;
+  }*/
+
+  article {
+    @apply bg-base-200 my-16;
+    min-height: 25vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(24ch,1fr));
+    grid-auto-flow: dense;
+    gap: 6ch;
+    padding: 3ch;
+    align-items: end;
+  }
+  @media (min-width: 65ch) {
+    article aside {
+      grid-column-end: span 2;
+    }
+    img, .imgplaceholder {
+    }
+  }
+  img, .imgplaceholder {
+    @apply rounded-lg shadow-2xl;/* max-w-xs*/
+    /*min-width: 30%;*/
+    width: 100%;
+  }
+  /*.portray {
+    border: 2px solid;
+    grid-row-end: span 2;
+  }*/
+  h1 {
+    @apply text-2xl font-bold pb-4;
+  }
+  time {
+    @apply h-8;
+    display: block;
+    font-size: smaller;
+    font-variant: small-caps;
+  }
+</style>

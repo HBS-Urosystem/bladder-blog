@@ -4,3 +4,5 @@ export const allCategoriesWithPosts = `*[_type == 'category']{"posts": *[_type =
 
 export const allAuthors = `*[_type == 'author']`;
 
+export const allEvents = `*[_type == 'event']{...} | order(date1 desc)`;
+
