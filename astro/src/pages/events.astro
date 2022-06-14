@@ -48,7 +48,7 @@ const allEventData = await client.fetch(allEvents)
         <h1 class="">{event.title}</h1>
         <SanityBlockContent blocks={event.body} />
       </aside>
-      {event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}
+      {event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}
   </article>
   ))}
 </main>
