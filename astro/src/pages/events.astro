@@ -25,7 +25,7 @@ const allEventData = await client.fetch(allEvents)
 const d = new Date();
 const futureEvents = new Array();
 //console.log(d.getTime())
-pastEvents = allEventData.filter(event => {
+const pastEvents = allEventData.filter(event => {
   const date = new Date(event.date2 || event.date1)
   if (d.getTime() < date.getTime()) {
     futureEvents.push(event)
