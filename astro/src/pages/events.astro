@@ -44,7 +44,7 @@ const pastEvents = allEventData.filter(event => {
   {futureEvents.map(event => (
   <article>
     <aside>
-      <time><span class="badge badge-accent">UPCOMING</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
+      <time><span class="badge badge-lg badge-accent">UPCOMING</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
       <h1 class="">{event.title}</h1>
       <SanityBlockContent blocks={event.body} />
     </aside>
