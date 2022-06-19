@@ -44,7 +44,7 @@ const pastEvents = allEventData.filter(event => {
   {futureEvents.map(event => (
   <article>
     <aside>
-      <time><span class="badge badge-lg badge-accent">UPCOMING</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
+      <time><span class="badge badge-md badge-accent">Upcoming</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
       <h1 class="">{event.title}</h1>
       <SanityBlockContent blocks={event.body} />
     </aside>
@@ -55,7 +55,7 @@ const pastEvents = allEventData.filter(event => {
 
 <header>
   <div class="text-center hero-content text-neutral-content">
-  <div class="max-w-md">
+  <div class="max-w-lg">
     <!--<p class="mb-5">{description}</p>-->
     <Subscribe/>
   </div>
@@ -81,10 +81,10 @@ const pastEvents = allEventData.filter(event => {
     @apply hero min-h-max;
   }
   .hero-content {
-    padding-top: 6rem;
+    padding-top: 3rem;
   }
   main {
-    @apply container max-w-6xl mx-auto;
+    @apply container max-w-6xl mx-auto px-4;
   }
   /*section {
     min-height: 50vh;
@@ -100,7 +100,7 @@ const pastEvents = allEventData.filter(event => {
     padding: 3ch;
     align-items: end;
   }
-  .events article {
+  #events article {
     grid-template-columns: repeat(auto-fill,minmax(24ch,1fr));
   }
   @media (min-width: 65ch) {

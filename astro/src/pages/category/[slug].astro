@@ -32,9 +32,9 @@ Yours truly, UroSystem Team.`;
   </div>
 </header>
 <main id="content">
-  <section>
+  <!--<section>-->
     {category.posts.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
-  </section>
+  <!--</section>-->
 </main>
 </BaseLayout>
 
@@ -46,11 +46,12 @@ Yours truly, UroSystem Team.`;
     /*padding-top: 4rem;*/
   }
   main {
-    @apply container mx-auto;
+    /*@apply container mx-auto;*/
+    @apply container max-w-6xl mx-auto px-4;
   }
 
-section {
+/*section {
   min-height: 50vh;
-}
+}*/
 
 </style>

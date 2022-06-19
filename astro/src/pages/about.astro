@@ -24,8 +24,8 @@ const allAuthorData = await client.fetch(allAuthors);
 
 ---
 <BaseLayout title={`${title} – Our authors`} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
-<header style={`background-image: url(${mainImgUrl})`}>
-  <div class="hero-overlay bg-opacity-60"></div>
+<header s-tyle={`background-image: url(${mainImgUrl})`}>
+  <!--<div class="hero-overlay bg-opacity-60"></div>-->
   <div class="text-center hero-content text-neutral-content">
     <!--<img width="720" height="420" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />-->
     <div class="max-w-md">
@@ -44,7 +44,7 @@ const allAuthorData = await client.fetch(allAuthors);
         <h1 class="">{author.name}</h1>
         <SanityBlockContent blocks={author.bio} />
       </div>
-      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>}
+      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).width(720).url()}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>}
     </aside>
   </article>
   ))}
@@ -59,7 +59,8 @@ const allAuthorData = await client.fetch(allAuthors);
   }
 
   main {
-    @apply container mx-auto;
+    /*@apply container mx-auto;*/
+    @apply container max-w-6xl mx-auto px-4;
   }
   /*section {
     min-height: 50vh;
