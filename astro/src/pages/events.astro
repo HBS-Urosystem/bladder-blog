@@ -18,37 +18,59 @@ let description = `We aim to give guidance for individuals who think they may ha
 <br>
 <br>
 Meet us on the next event!`
-let permalink = 'https://www.urosystem.com/blog/about'
-let mainImgUrl = '/blog/assets/+.svg'
+let permalink = 'https://www.urosystem.com/blog/event'
+//let mainImgUrl = '/blog/assets/+.svg'
 
 const allEventData = await client.fetch(allEvents)
-/*allEventData.map(event => {
-  console.log(event.title,event.images)
-})*/
+const d = new Date();
+const futureEvents = new Array();
+//console.log(d.getTime())
+pastEvents = allEventData.filter(event => {
+  const date = new Date(event.date2 || event.date1)
+  if (d.getTime() < date.getTime()) {
+    futureEvents.push(event)
+    return false
+  }
+  //console.log(date.getTime())
+  return true
+})
+//console.log(pastEvents.length)
+//console.log({allEventData})
+
 //console.log(getSanityImageUrl(allEventData[1].images[0]).url())
 ---
 <BaseLayout title={`${title} – Events`} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
-<header style={`background-image: url(${mainImgUrl})`}>
-  <div class="hero-overlay bg-opacity-60"></div>
-  <div class="text-center hero-content text-neutral-content">
-    <!--<img width="720" height="420" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />-->
-    <div class="max-w-md">
-      <h1 class="mb-5 text-5xl font-bold">{title}</h1>
+<main>
+  {futureEvents.map(event => (
+  <article>
+    <aside>
+      <time><span class="badge badge-accent">UPCOMING</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
+      <h1 class="">{event.title}</h1>
+      <SanityBlockContent blocks={event.body} />
+    </aside>
+    <!--{event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}-->
+  </article>
+  ))}
+</main>
 
-      <p class="mb-5">{description}</p>
+<header>
+  <div class="text-center hero-content text-neutral-content">
+  <div class="max-w-md">
+    <p class="mb-5">{description}</p>
     <Subscribe/>
-    </div>
+  </div>
   </div>
 </header>
-<main id="team">
-  {allEventData.map(event => (
+
+<main id="events">
+  {pastEvents.map(event => (
   <article>
-      <aside>
-        <time>{formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
-        <h1 class="">{event.title}</h1>
-        <SanityBlockContent blocks={event.body} />
-      </aside>
-      {event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}
+    <aside>
+      <time>{formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
+      <h1 class="">{event.title}</h1>
+      <SanityBlockContent blocks={event.body} />
+    </aside>
+    {event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}
   </article>
   ))}
 </main>
@@ -56,11 +78,11 @@ const allEventData = await client.fetch(allEvents)
 
 <style>
   header {
-    @apply hero min-h-screen;
-    /*margin-top: -4rem;*/
-    background-size: 568px;
+    @apply hero min-h-max;
   }
-
+  .hero-content {
+    padding-top: 6rem;
+  }
   main {
     @apply container max-w-6xl mx-auto;
   }
@@ -73,11 +95,13 @@ const allEventData = await client.fetch(allEvents)
     @apply bg-base-200 my-16;
     min-height: 25vh;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(24ch,1fr));
     grid-auto-flow: dense;
     gap: 6ch;
     padding: 3ch;
     align-items: end;
+  }
+  .events article {
+    grid-template-columns: repeat(auto-fill,minmax(24ch,1fr));
   }
   @media (min-width: 65ch) {
     article aside {
