@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '/src/layouts/BaseLayout.astro'
-import BlogPostPreview from '/src/components/BlogPostPreview.astro'
-import Subscribe from '/src/components/Subscribe.astro'
+import BlogPostPreview from '/src/components/BlogPostPreview.astro';
+import Subscribe from '/src/components/Subscribe.astro';
 
-import { client } from '/src/lib/sanityClient.js'
-import { allPosts } from '/src/lib/api.js'
+import { client } from '/src/lib/sanityClient.js';
+import { allPosts } from '/src/lib/api.js';
 
-let title = 'The Bladder Blog'
-let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.`
+let title = 'The Bladder Blog';
+let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.`;
 let keywords = [
   'IC/BPS',
   'IC treatment',
@@ -16,10 +16,10 @@ let keywords = [
   'bladder pain',
   'pelvic pain'
 ]
-let permalink = 'https://www.urosystem.com/blog'
-let mainImgUrl = '/blog/assets/+.svg'
+let permalink = 'https://www.urosystem.com/blog';
+let mainImgUrl = '/blog/assets/+.svg';
 
-const allPostData = await client.fetch(allPosts)
+const allPostData = await client.fetch(allPosts);
 
 ---
 <BaseLayout title={title} description={description} keywords={keywords} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
@@ -35,9 +35,9 @@ const allPostData = await client.fetch(allPosts)
   </div>
 </header>
 <main id="content">
-  <!--<section>-->
+  <section>
     {allPostData.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
-  <!--</section>-->
+  </section>
 </main>
 </BaseLayout>
 
@@ -48,14 +48,11 @@ const allPostData = await client.fetch(allPosts)
     /*padding-top: 4rem;*/
     background-size: 568px;
   }
-  .hero-overlay {
-    backdrop-filter: blur(2px);
-  }
   h1 {
     padding-top: 6rem;
   }
   main {
-    @apply container max-w-6xl mx-auto px-4;
+    @apply container mx-auto;
   }
   fieldset {
     @apply flex flex-wrap gap-4;

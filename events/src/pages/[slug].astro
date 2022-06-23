@@ -1,0 +1,38 @@
+---
+// Component Imports
+import BlogPostLayout from '/src/layouts/BlogPostLayout.astro'
+import BlogPost from '/src/components/BlogPost.astro'
+import {client} from '/src/lib/sanityClient.js';
+import { getSanityImageUrl } from '/src/utils/helpers.js';
+import { allPosts } from '/src/lib/api.js';
+
+export async function getStaticPaths({rss}) {
+  const allBlogPosts = await client.fetch(allPosts);
+
+  rss({
+    title: 'Urosystem\'s Bladder Blog',
+    description: 'Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.',
+    customData: `<language>en-us</language>`,
+    items: allBlogPosts.filter(i => !!i.publishedAt).map(item => ({
+      title: item.title,
+      description: item.excerpt,
+      link: `/blog/${item.slug.current}`,
+      pubDate: item.publishedAt || null,
+    })),
+    dest: '/blog/rss.xml',
+  });
+  return allBlogPosts.map(post => ({params: { slug: post.slug.current }, props: {post}}));
+}
+
+const { post } = Astro.props;
+---
+
+<BlogPostLayout title={post.title} description={post.excerpt} keywords={post.keywords} ogImageUrl={post.mainImage && getSanityImageUrl(post.mainImage).width(1200).url()} >
+  <BlogPost post={post} />
+</BlogPostLayout>
+
+<style>
+  button {
+    @apply indicator indicator-center;
+  }
+</style>

@@ -44,7 +44,7 @@ const allAuthorData = await client.fetch(allAuthors);
         <h1 class="">{author.name}</h1>
         <SanityBlockContent blocks={author.bio} />
       </div>
-      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).width(720).url()}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>}
+      {author.image && <img loading="lazy" src={getSanityImageUrl(author.image).url()}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>}
     </aside>
   </article>
   ))}
@@ -57,13 +57,9 @@ const allAuthorData = await client.fetch(allAuthors);
     /*margin-top: -4rem;*/
     background-size: 568px;
   }
-  .hero-overlay {
-    backdrop-filter: blur(2px);
-  }
 
   main {
-    /*@apply container mx-auto;*/
-    @apply container max-w-6xl mx-auto px-4;
+    @apply container mx-auto;
   }
   /*section {
     min-height: 50vh;

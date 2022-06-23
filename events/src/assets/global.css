@@ -28,12 +28,6 @@ html[data-theme="dark"] {
 }
 /*body {
   background-image: url('/blog/assets/+.svg');
-  background-size: 568px;
-}*/
-/*.hero-overlay {
-  @apply bg-opacity-60;
-  height: 100vh;
-  position: fixed;
 }*/
 
 article p, article ul, article ol, article dl, article table, footer + aside p {

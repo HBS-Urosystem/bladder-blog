@@ -1,0 +1,31 @@
+{
+  "name": "astro-minimal-starter",
+  "version": "v2.0.0",
+  "private": false,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build --experimental-static-build"
+  },
+  "devDependencies": {
+    "@astrojs/lit": "^0.1.2",
+    "@astrojs/preact": "^0.1.2",
+    "@portabletext/react": "^1.0.6",
+    "@sanity/asset-utils": "^1.2.3",
+    "@sanity/block-content-to-markdown": "^0.0.5",
+    "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/image-url": "^1.0.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "astro": "^0.23.0",
+    "autoprefixer": "^10.4.2",
+    "daisyui": "^2.2.2",
+    "date-fns": "^2.23.0",
+    "dotenv": "^10.0.0",
+    "postcss": "^8.4.7",
+    "prismjs": "^1.25.0",
+    "tailwindcss": "^3.0.23"
+  },
+  "dependencies": {
+    "@sanity/client": "^2.23.2"
+  }
+}

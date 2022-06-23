@@ -1,0 +1,56 @@
+---
+// Component Imports
+import BlogPostLayout from '/src/layouts/BlogPostLayout.astro'
+import BaseLayout from '/src/layouts/BaseLayout.astro'
+import Wrapper from '/src/components/Wrapper.astro'
+import BlogPostPreview from '/src/components/BlogPostPreview.astro'
+import {client} from '/src/lib/sanityClient.js'
+// import { getSanityImageUrl } from '/src/utils/helpers.js';
+import { allCategoriesWithPosts } from '/src/lib/api.js';
+
+export async function getStaticPaths() {
+  const allCategoryData = await client.fetch(allCategoriesWithPosts);
+
+  return allCategoryData.map(category => ({params: { slug: category.slug.current }, props: {category}}));
+}
+
+const { category } = Astro.props;
+let description = `Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page!  
+<br>
+<br>
+Yours truly, UroSystem Team.`;
+
+---
+
+<BaseLayout title={`${category.title} – The Bladder Blog`} description={description} >
+<header>
+  <div class="text-center hero-content text-neutral-content">
+    <!--<img width="720" height="420" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />-->
+    <div class="max-w-md">
+      <h1>All Posts Tagged with "{category.title}"</h1>
+    </div>
+  </div>
+</header>
+<main id="content">
+  <section>
+    {category.posts.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
+  </section>
+</main>
+</BaseLayout>
+
+<style>
+  header {
+    @apply hero;
+    min-height: 50vh;
+    /*margin-top: -4rem;*/
+    /*padding-top: 4rem;*/
+  }
+  main {
+    @apply container mx-auto;
+  }
+
+section {
+  min-height: 50vh;
+}
+
+</style>

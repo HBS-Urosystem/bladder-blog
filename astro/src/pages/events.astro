@@ -34,6 +34,7 @@ const pastEvents = allEventData.filter(event => {
   //console.log(date.getTime())
   return true
 })
+let mainImgUrl = '/blog/assets/+.svg'
 //console.log(pastEvents.length)
 //console.log({allEventData})
 
@@ -53,7 +54,8 @@ const pastEvents = allEventData.filter(event => {
   ))}
 </main>
 
-<header>
+<header style={`background-image: url(${mainImgUrl})`}>
+  <div class="hero-overlay bg-opacity-60"></div>
   <div class="text-center hero-content text-neutral-content">
   <div class="max-w-lg">
     <!--<p class="mb-5">{description}</p>-->
@@ -79,6 +81,10 @@ const pastEvents = allEventData.filter(event => {
 <style>
   header {
     @apply hero min-h-max;
+    background-size: 568px;
+  }
+  .hero-overlay {
+    backdrop-filter: blur(2px);
   }
   .hero-content {
     padding-top: 3rem;

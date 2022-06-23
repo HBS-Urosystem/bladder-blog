@@ -1,0 +1,19 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const {title, description, keywords, permalink, publishDate, ogImageUrl, canonicalURL } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <BaseHead title={title} description={description} keywords={keywords} permalink={permalink} canonicalURL={canonicalURL} publishDate={publishDate} ogImageUrl={ogImageUrl} />
+
+  </head>
+  <body>
+  <Nav/>
+  <slot/>
+  <Footer/>
+  </body>
+</html>
