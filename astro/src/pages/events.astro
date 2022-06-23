@@ -72,7 +72,14 @@ let mainImgUrl = '/blog/assets/+.svg'
       <h1 class="">{event.title}</h1>
       <SanityBlockContent blocks={event.body} />
     </aside>
-    {event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}
+    <div class="carousel rounded-lg">
+      
+      {event.images?.length && event.images.map(img => 
+      <div class="carousel-item">
+      <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}>
+      </div>)}
+      
+    </div>
   </article>
   ))}
 </main>
@@ -98,29 +105,46 @@ let mainImgUrl = '/blog/assets/+.svg'
   }*/
 
   article {
-    @apply bg-base-200 my-16;
+    @apply bg-base-200 mt-16;
     min-height: 25vh;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-auto-flow: dense;
     gap: 6ch;
     padding: 3ch;
     align-items: end;
   }
-  #events article {
+  aside {
+    flex: 0 1 65ch;
+  }
+  /*#events article {
     grid-template-columns: repeat(auto-fill,minmax(24ch,1fr));
   }
-  @media (min-width: 65ch) {
-    article aside {
-      grid-column-end: span 2;
-    }
-    img, .imgplaceholder {
-    }
+  .carousel:before {
+    @apply btn btn-circle btn-xs btn-primary;
+    position: sticky;
+    left: 0;
+    content: '❮';
   }
-  img, .imgplaceholder {
-    @apply rounded-lg shadow-2xl;/* max-w-xs*/
-    /*min-width: 30%;*/
+  */
+
+  .carousel {
+    flex: 1 0 32ch;
+    position: relative;
+    gap: 2ch;
     width: 100%;
+    grid-column-end: auto;
   }
+  .carousel-item {
+    /*width: min(32ch,100%);*/
+    width: min(32ch,100%);
+  }
+  /*max-w-xs rounded-lg*/
+  img, .imgplaceholder {
+    @apply shadow-2xl;
+    object-fit: contain;
+  }
+
   /*.portray {
     border: 2px solid;
     grid-row-end: span 2;
