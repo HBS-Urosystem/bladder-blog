@@ -24,8 +24,7 @@ let permalink = 'https://www.urosystem.com/blog/event'
 const allEventData = await client.fetch(allEvents)
 const d = new Date();
 const futureEvents = new Array();
-//console.log(d.getTime())
-const pastEvents = allEventData.filter(event => {
+const pastEvents = allEventData?.filter(event => {
   const date = new Date(event.date2 || event.date1)
   if (d.getTime() < date.getTime()) {
     futureEvents.push(event)
@@ -34,6 +33,7 @@ const pastEvents = allEventData.filter(event => {
   //console.log(date.getTime())
   return true
 })
+//console.log(pastEvents)
 let mainImgUrl = '/blog/assets/+.svg'
 //console.log(pastEvents.length)
 //console.log({allEventData})
@@ -41,49 +41,59 @@ let mainImgUrl = '/blog/assets/+.svg'
 //console.log(getSanityImageUrl(allEventData[1].images[0]).url())
 ---
 <BaseLayout title={`${title} – Events`} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
-<main>
-  {futureEvents.map(event => (
-  <article>
-    <aside>
-      <time><span class="badge badge-md badge-accent">Upcoming</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
-      <h1 class="">{event.title}</h1>
-      <SanityBlockContent blocks={event.body} />
-    </aside>
-    <!--{event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}-->
-  </article>
-  ))}
-</main>
+<!--<main>
+</main>-->
 
-<header s-tyle={`background-image: url(${mainImgUrl})`}>
-  <!--<div class="hero-overlay bg-opacity-60"></div>-->
-  <div class="text-center hero-content text-neutral-content">
+<header style={`background-image: url(${mainImgUrl})`}>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="text-center hero-content flex-wrap text-neutral-content">
+    {futureEvents?.map(event => (
+    <article class="max-w-lg">
+      <aside>
+        <time><span class="badge badge-md badge-accent">Upcoming</span> {formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
+        <h1 class="">{event.title}</h1>
+        <SanityBlockContent blocks={event.body} />
+      </aside>
+      <!--{event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}-->
+    </article>
+    ))}
+  <div class="text-center hero-content text-neutral-content w-full">
   <div class="max-w-lg">
-    <!--<p class="mb-5">{description}</p>-->
     <Subscribe/>
+  </div>
   </div>
   </div>
 </header>
 
 <main id="events">
-  {pastEvents.map(event => (
+  {pastEvents?.map(event => (
   <article>
     <aside>
       <time>{formatBlogPostDate(event.date1)}{event.date2 ? ' – ' + formatBlogPostDate(event.date2) : ''}</time>
       <h1 class="">{event.title}</h1>
       <SanityBlockContent blocks={event.body} />
     </aside>
-    <div class="carousel rounded-lg">
-      
+    <div class="carousel rounded-lg" id={event.slug.current}>
+      <button onclick="carleft(this.parentNode)">◀︎</button>
       {event.images?.length && event.images.map(img => 
-      <div class="carousel-item">
-      <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}>
-      </div>)}
-      
+      <div class="carousel-item" id=`${img._key}`>
+        <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}>
+      </div>)}      
+      <button onclick="carright(this.parentNode)">▶︎</button>
     </div>
   </article>
   ))}
 </main>
 </BaseLayout>
+
+<script>
+  const carleft = (car) =>{
+    car.scrollLeft -= 380
+  }
+  const carright = (car) => {
+    car.scrollLeft += 380
+  }
+</script>
 
 <style>
   header {
@@ -109,8 +119,7 @@ let mainImgUrl = '/blog/assets/+.svg'
     /*min-height: 25vh;*/
     display: flex;
     flex-wrap: wrap;
-    grid-auto-flow: dense;
-    gap: 6ch;
+    gap: 4ch;
     padding: 3ch;
     align-items: end;
   }
@@ -139,6 +148,21 @@ let mainImgUrl = '/blog/assets/+.svg'
     /*width: min(32ch,100%);*/
     width: min(32ch,100%);
   }
+  .carousel button {
+    @apply btn btn-circle btn-sm;
+    position: sticky;
+    top: 50%;
+    width: 2rem;
+    color: #3da4c9;
+  }
+  .carousel button:first-of-type {
+    left: .25em;
+  }
+  .carousel button:last-of-type {
+    right: .25em;
+  }
+
+
   /*max-w-xs rounded-lg*/
   img, .imgplaceholder {
     @apply shadow-2xl;
