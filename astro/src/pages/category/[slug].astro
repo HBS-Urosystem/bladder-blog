@@ -27,7 +27,7 @@ Yours truly, UroSystem Team.`;
   <div class="text-center hero-content text-neutral-content">
     <!--<img width="720" height="420" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />-->
     <div class="max-w-md">
-      <h1>All Posts Tagged with "{category.title}"</h1>
+      <h1 class="text-2xl">All Posts Tagged with "{category.title}"</h1>
     </div>
   </div>
 </header>
@@ -41,9 +41,12 @@ Yours truly, UroSystem Team.`;
 <style>
   header {
     @apply hero;
-    min-height: 50vh;
+    min-height: 25vh;
     /*margin-top: -4rem;*/
     /*padding-top: 4rem;*/
+  }
+  .hero-content {
+    padding-top: 4rem;
   }
   main {
     /*@apply container mx-auto;*/
