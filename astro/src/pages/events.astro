@@ -97,7 +97,7 @@ let mainImgUrl = '/blog/assets/+.svg'
 
 <style>
   header {
-    @apply hero min-h-max;
+    @apply hero min-h-screen;
     background-size: 568px;
   }
   .hero-overlay {
@@ -115,7 +115,8 @@ let mainImgUrl = '/blog/assets/+.svg'
   }*/
 
   article {
-    @apply bg-base-200 mt-16;
+    @apply mt-16 shadow-xl image-full;
+    background-color: var(--dark-blue);
     /*min-height: 25vh;*/
     display: flex;
     flex-wrap: wrap;
