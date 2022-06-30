@@ -32,8 +32,9 @@ const serializers = {
       });
       return asset?.url && <a href={asset.url} target="_blank">{node.description}</a>
     },
-    image: ({node}) => <img src={`${getSanityImageUrl(node).url()}`} alt="" loading="lazy"/>
-  }
+    image: ({node}) => <img src={`${getSanityImageUrl(node).url()}`} alt="" loading="lazy"/>,
+    link: ({node, children}) => <a href={`${node}`} rel="external" target="_blank">{children}</a>,
+  },
 }
 
 export default function SanityBlockContent({blocks}) {
