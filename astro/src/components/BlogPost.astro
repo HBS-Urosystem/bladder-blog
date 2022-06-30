@@ -81,7 +81,8 @@ const postUrl = Astro.request.canonicalURL.href
     max-width: 1280px;
   }
   article {
-    @apply bg-base-200 p-4;
+    @apply p-4;
+    @apply shadow-xl image-full;
     @apply mx-auto prose md:prose-lg lg:prose-xl prose-a:underline prose-a:decoration-dotted;
   }
 
