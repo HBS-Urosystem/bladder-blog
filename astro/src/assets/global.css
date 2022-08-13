@@ -21,7 +21,6 @@ font-size: var(--rem);
 --grad-dark-blue: linear-gradient(302deg, var(--mid-blue), var(--dark-blue));
 --grad-dark-blue-75: linear-gradient(302deg, var(--mid-blue-75), var(--dark-blue-75));
 --grad-light-blue-75: linear-gradient(302deg, var(--light-blue-75), var(--mid-blue-75));
-
 }
 html[data-theme="dark"] {
   background-color: var(--bg);
@@ -47,6 +46,9 @@ article h4, article h5, article h6 {
 }
 article p a, article p a:visited, article li > a, article li > a:visited {
   word-break: break-word;
+}
+article figcaption {
+  --tw-prose-captions: hsl(var(--bc));
 }
 
 [data-theme="dark"] header .btn, [data-theme="dark"] main .btn , [data-theme="dark"] aside .btn {

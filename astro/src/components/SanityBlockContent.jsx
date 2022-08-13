@@ -33,6 +33,7 @@ const serializers = {
       return asset?.url && <a href={asset.url} target="_blank">{node.description}</a>
     },
     image: ({node}) => <img src={`${getSanityImageUrl(node).url()}`} alt="" loading="lazy"/>,
+    captionImage: ({node}) => <figure><img src={`${getSanityImageUrl(node).url()}`} alt="" loading="lazy"/>{node.caption && <figcaption>{node.caption}</figcaption>}</figure>,
     link: ({node, children}) => <a href={`${node}`} rel="external" target="_blank">{children}</a>,
   },
 }
