@@ -57,11 +57,11 @@ let mainImgUrl = '/blog/assets/+.svg'
       <!--{event.images?.length && event.images.map(img => <img loading="lazy" src={getSanityImageUrl(img).width(720).url()} class={img.portray ? 'portray' : 'landscape'}> || <img class="imgplaceholder" src="/blog/assets/icon-5359554_640_optim.png"/>)}-->
     </article>
     ))}
-  <div class="text-center hero-content text-neutral-content w-full">
-  <div class="max-w-lg">
-    <Subscribe/>
-  </div>
-  </div>
+    <div class="text-center hero-content text-neutral-content w-full">
+      <div class="max-w-lg">
+        <Subscribe/>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -122,7 +122,7 @@ let mainImgUrl = '/blog/assets/+.svg'
     flex-wrap: wrap;
     gap: 4ch;
     padding: 3ch;
-    align-items: end;
+    align-items: flex-end;
   }
   aside {
     flex: 0 1 65ch;
