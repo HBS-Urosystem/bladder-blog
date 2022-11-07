@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import Subscribe from '/src/components/Subscribe.astro';
+//import Subscribe from '/src/components/Subscribe.astro';
 
 const {title, description, keywords, ogImageUrl, publishDate, permalink} = Astro.props;
 ---
@@ -16,7 +16,7 @@ const {title, description, keywords, ogImageUrl, publishDate, permalink} = Astro
     <Nav/>
     <slot/>
     <div class="max-w-md mx-auto">
-    <Subscribe/>
+    <!--<Subscribe/>-->
     </div>
     <Footer/>
     <!--<script type="module" src={Astro.resolve('../components/CodeBlock/code-block.ts')}></script>-->
