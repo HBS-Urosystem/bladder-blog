@@ -39,6 +39,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   // Comment out "renderers: []" to enable Astro's default component support.
   renderers: ['@astrojs/renderer-preact','@astrojs/renderer-svelte'],
   devOptions: {
+    port: 3001,         // The port to run the dev server on.
     tailwindConfig: './tailwind.config.js',
     // Example: Require a trailing slash during development
     //trailingSlash: 'always',

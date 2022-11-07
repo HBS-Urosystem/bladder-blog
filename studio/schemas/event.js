@@ -17,18 +17,18 @@ export default {
         maxLength: 96,
       },
     },
-    {
+    /*{
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
-    },
-    {
+    },*/
+    /*{
       name: 'keywords',
       title: 'Key words',
       type: 'array',
       of: [{type: 'string'}],
-    },
+    },*/
     {
       name: 'date1',
       title: 'Start date',
@@ -42,14 +42,14 @@ export default {
       type: 'datetime',
       validation: Rule => Rule.min(Rule.valueOfField('date1'))
     },
-    {
+    /*{
       name: 'imageHero',
       title: 'Hero image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    },
+    },*/
     {
       name: 'images',
       title: 'Images',
@@ -72,7 +72,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      media: 'imageHero',
+      /*media: 'imageHero',*/
     },
   },
 }
