@@ -15,6 +15,7 @@ export async function getStaticPaths({rss}) {
     customData: `<language>en-us</language>`,
     items: allBlogPosts.filter(i => !!i.publishedAt).map(item => ({
       title: item.title,
+      image: getSanityImageUrl(item.mainImage)width(400).url()
       description: item.excerpt,
       link: `/blog/${item.slug.current}`,
       pubDate: item.publishedAt || null,
