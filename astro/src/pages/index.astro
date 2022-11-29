@@ -21,7 +21,7 @@ let mainImgUrl = '/blog/assets/+.svg'
 
 const allBlogPosts = await client.fetch(allPosts)
 
-export async function getStaticPaths({rss}) {
+/*export async function getStaticPaths({rss}) {
   const allBlogPosts = await client.fetch(allPosts);
 
   rss({
@@ -39,7 +39,7 @@ export async function getStaticPaths({rss}) {
     dest: '/blog/rss.xml',
   });
   return allBlogPosts.map(post => ({params: { slug: post.slug.current }, props: {post}}));
-}
+}*/
 
 ---
 <BaseLayout title={title} description={description} keywords={keywords} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
