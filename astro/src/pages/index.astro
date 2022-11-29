@@ -19,7 +19,27 @@ let keywords = [
 let permalink = 'https://www.urosystem.com/blog'
 let mainImgUrl = '/blog/assets/+.svg'
 
-const allPostData = await client.fetch(allPosts)
+const allBlogPosts = await client.fetch(allPosts)
+
+export async function getStaticPaths({rss}) {
+  const allBlogPosts = await client.fetch(allPosts);
+
+  rss({
+    title: 'Urosystem\'s Bladder Blog',
+    description: 'Our company, Urosystem Ltd. is focused on spreading awareness of IC/BPS and encourages you to share our content with anyone who is affected by this disease. We hope you enjoy the read and find any helpful tips throughout this page! <br><br> Yours truly, UroSystem Team.',
+    customData: `<language>en-us</language>`,
+    items: allBlogPosts.filter(i => !!i.publishedAt).map(item => ({
+      title: item.title,
+      customData: `<img>${getSanityImageUrl(item.mainImage).width(400).url()}</img>`,
+      image: getSanityImageUrl(item.mainImage).width(400).url(),
+      description: item.excerpt,
+      link: `/blog/${item.slug.current}`,
+      pubDate: item.publishedAt || null,
+    })),
+    dest: '/blog/rss.xml',
+  });
+  return allBlogPosts.map(post => ({params: { slug: post.slug.current }, props: {post}}));
+}
 
 ---
 <BaseLayout title={title} description={description} keywords={keywords} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
@@ -36,7 +56,7 @@ const allPostData = await client.fetch(allPosts)
 </header>
 <main id="content">
   <!--<section>-->
-    {allPostData.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
+    {allBlogPosts.map((post) => post.publishedAt && <BlogPostPreview post={post} />)}
   <!--</section>-->
 </main>
 </BaseLayout>
