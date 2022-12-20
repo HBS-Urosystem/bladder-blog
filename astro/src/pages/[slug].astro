@@ -16,6 +16,7 @@ export async function getStaticPaths({rss}) {
     items: allBlogPosts.filter(i => !!i.publishedAt).map(item => ({
       title: item.title,
       //customData: `<img>${getSanityImageUrl(item.mainImage).width(400).url()}</img>`,
+      content: `<img>${getSanityImageUrl(item.mainImage).width(400).url()}</img>`,
       //custom_elements: [`<img>${getSanityImageUrl(item.mainImage).width(400).url()}</img>`],
       enclose: item.images?.length && {url: getSanityImageUrl(item.images[0]).width(400).url()} || '',
       image: item.images?.length && {url: getSanityImageUrl(item.images[0]).width(400).url()} || '',
