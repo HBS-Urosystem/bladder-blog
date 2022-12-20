@@ -22,14 +22,14 @@ export default {
         title: 'My Netlify deploys',
         sites: [
           {
-            title: 'Bladder Blog',
+            title: 'Bladder Blog ',
             apiId: '251d4948-751f-433d-9d31-12156f8fcd79',
             buildHookId: '632ae8866a78db142f70906d',
             name: 'bladder-blog',
             url: 'https://urosystem.com/blog',
           },
           {
-            title: 'Events',
+            title: 'Events + Hírlevél ',
             apiId: '7bcd2664-b0d3-4cb6-9fa3-93c25dec4f7a',
             buildHookId: '632b212df5593f4cfaf2c445',
             name: 'urosystem',

@@ -42,7 +42,7 @@ export default {
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
-          {
+          { /// TODO rel=external
             title: 'URL',
             name: 'link',
             type: 'object',
@@ -51,11 +51,20 @@ export default {
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+                validation: Rule => Rule.uri({
+                  scheme: ['http', 'https', 'mailto', 'tel']
+                })
+              },
+              {
+                title: 'External',
+                name: 'ext',
+                type: 'boolean',
+                initialValue: true
               },
             ],
           },
           {
-            title: 'Post',
+            title: 'Other post',
             name: 'ref',
             type: 'object',
             fields: [
@@ -76,10 +85,10 @@ export default {
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-    {
+    /*{
       type: 'captionImage',
       options: {hotspot: true},
-    },
+    },*/
     {
       type: 'image',
       options: {hotspot: true},
