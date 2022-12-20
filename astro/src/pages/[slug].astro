@@ -16,7 +16,7 @@ export async function getStaticPaths({rss}) {
     items: allBlogPosts.filter(i => !!i.publishedAt).map(item => ({
       title: item.title,
       //customData: `<![CDATA[ <img>${getSanityImageUrl(item.mainImage).width(400).url()}</img> ]]>`,
-      enclosure: {url="http://mysite.com/image.jpg" length="12345" type="image/jpeg"},
+      enclosure: {url="http://mysite.com/image.jpg", length: "12345", type: "image/jpeg"},
       description: item.excerpt,
       link: `/blog/${item.slug.current}`,
       pubDate: item.publishedAt || null,
