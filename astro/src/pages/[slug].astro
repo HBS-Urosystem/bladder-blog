@@ -18,6 +18,7 @@ export async function getStaticPaths({rss}) {
       //customData: `<img>${getSanityImageUrl(item.mainImage).width(400).url()}</img>`,
       //custom_elements: [`<img>${getSanityImageUrl(item.mainImage).width(400).url()}</img>`],
       enclose: item.images?.length && {url: getSanityImageUrl(item.images[0]).width(400).url()} || '',
+      image: item.images?.length && {url: getSanityImageUrl(item.images[0]).width(400).url()} || '',
       description: item.excerpt,
       link: `/blog/${item.slug.current}`,
       pubDate: item.publishedAt || null,
