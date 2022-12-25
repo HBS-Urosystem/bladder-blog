@@ -16,7 +16,7 @@ export async function getStaticPaths({rss}) {
     customData: `<language>en-us</language>`,
     items: allBlogPosts.filter(i => !!i.publishedAt).map(item => ({
       title: item.title,
-      customData: `<media:content url="http://mysite.com/image.jpg" type="image/jpeg" medium="image" />`,
+      customData: `<media:content url="${getSanityImageUrl(item.mainImage).width(600).url()}" type="image/jpeg" medium="image" />`,
       //enclosure: {url: "http://mysite.com/image.jpg", length: "12345", type: "image/jpeg"},
       //'media:content':{url: "http://mysite.com/image.jpg", type: "image/jpeg", medium: "image"},
       description: item.excerpt,
