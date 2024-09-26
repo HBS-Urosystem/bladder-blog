@@ -22,9 +22,9 @@ font-size: var(--rem);
 --grad-dark-blue-75: linear-gradient(302deg, var(--mid-blue-75), var(--dark-blue-75));
 --grad-light-blue-75: linear-gradient(302deg, var(--light-blue-75), var(--mid-blue-75));
 }
-html[data-theme="dark"] {
+/*html[data-theme="dark"] {
   background-color: var(--bg);
-}
+}*/
 /*body {
   background-image: url('/blog/assets/+.svg');
   background-size: 568px;
