@@ -1,6 +1,6 @@
 export default {
-  name: 'post',
-  title: 'Blog',
+  name: 'news-pro',
+  title: 'News for Professionals',
   type: 'document',
   fields: [
     {
@@ -19,13 +19,7 @@ export default {
       },
       validation: (Rule) => Rule.required()
     },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
-    },
-    {
+    /*{
       name: 'categories',
       title: 'Categories',
       type: 'array',
@@ -36,14 +30,15 @@ export default {
       title: 'Key words',
       type: 'array',
       of: [{type: 'string'}],
-    },
+    },*/
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      validation: (Rule) => Rule.required()
+      validation: (Rule) => Rule.required(),
+      initialValue: (new Date()).toISOString(),
     },
-    {
+    /*{
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -55,7 +50,7 @@ export default {
       name: 'imageHero',
       title: 'Hero image',
       type: 'boolean',
-    },
+    },*/
     {
       name: 'excerpt',
       title: 'Excerpt',
@@ -72,14 +67,14 @@ export default {
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
+      //author: 'author.name',
+      //media: 'mainImage',
     },
-    prepare(selection) {
+    /*prepare(selection) {
       const {author} = selection
       return Object.assign({}, selection, {
         subtitle: author && `by ${author}`,
       })
-    },
+    },*/
   },
 }

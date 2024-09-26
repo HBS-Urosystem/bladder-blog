@@ -11,6 +11,8 @@ import gridImage from './gridImage'
 import category from './category'
 import post from './post'
 import hirlev from './hirlevel'
+import hirlev_doc from './hirlevel-doc'
+import news from './news'
 import author from './author'
 import event from './event'
 
@@ -28,6 +30,8 @@ export default createSchema({
     category,
     event,
     hirlev,
+    hirlev_doc,
+    news,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
